@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		673C8AF1287326D800E8394D /* QuizEngine.docc in Sources */ = {isa = PBXBuildFile; fileRef = 673C8AF0287326D800E8394D /* QuizEngine.docc */; };
 		673C8AF7287326D800E8394D /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 673C8AEC287326D800E8394D /* QuizEngine.framework */; };
-		673C8AFC287326D800E8394D /* QuizEngineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673C8AFB287326D800E8394D /* QuizEngineTests.swift */; };
-		673C8AFD287326D800E8394D /* QuizEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 673C8AEF287326D800E8394D /* QuizEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,10 +22,7 @@
 
 /* Begin PBXFileReference section */
 		673C8AEC287326D800E8394D /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		673C8AEF287326D800E8394D /* QuizEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuizEngine.h; sourceTree = "<group>"; };
-		673C8AF0287326D800E8394D /* QuizEngine.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = QuizEngine.docc; sourceTree = "<group>"; };
 		673C8AF6287326D800E8394D /* QuizEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		673C8AFB287326D800E8394D /* QuizEngineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizEngineTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +65,6 @@
 		673C8AEE287326D800E8394D /* QuizEngine */ = {
 			isa = PBXGroup;
 			children = (
-				673C8AEF287326D800E8394D /* QuizEngine.h */,
-				673C8AF0287326D800E8394D /* QuizEngine.docc */,
 			);
 			path = QuizEngine;
 			sourceTree = "<group>";
@@ -80,7 +72,6 @@
 		673C8AFA287326D800E8394D /* QuizEngineTests */ = {
 			isa = PBXGroup;
 			children = (
-				673C8AFB287326D800E8394D /* QuizEngineTests.swift */,
 			);
 			path = QuizEngineTests;
 			sourceTree = "<group>";
@@ -92,7 +83,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				673C8AFD287326D800E8394D /* QuizEngine.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +184,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				673C8AF1287326D800E8394D /* QuizEngine.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +191,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				673C8AFC287326D800E8394D /* QuizEngineTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
