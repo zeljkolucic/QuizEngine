@@ -13,9 +13,11 @@ protocol Router {
 
 class Flow {
     
+    let questions: [String]
     let router: Router
     
-    init(router: Router) {
+    init(questions: [String], router: Router) {
+        self.questions = questions
         self.router = router
     }
     

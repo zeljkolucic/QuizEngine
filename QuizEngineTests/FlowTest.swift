@@ -13,7 +13,7 @@ class FlowTest: XCTestCase {
     
     func test_start_withNoQuestions_doesNotRouteToQuestion() {
         let router = RouterSpy()
-        let sut = Flow(router: router)
+        let sut = Flow(questions: [], router: router)
         
         sut.start()
         
