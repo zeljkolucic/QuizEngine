@@ -11,9 +11,10 @@ import XCTest
 
 class FlowTest: XCTestCase {
     
+    let router = RouterSpy()
+    
     func test_start_withNoQuestions_doesNotRouteToQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: [], router: router)
+        let sut = makeSut(questions: [])
         
         sut.start()
         
@@ -21,8 +22,7 @@ class FlowTest: XCTestCase {
     }
     
     func test_start_withOneQuestion_routesToCorrectQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1"], router: router)
+        let sut = makeSut(questions: ["Q1"])
         
         sut.start()
         
@@ -30,8 +30,7 @@ class FlowTest: XCTestCase {
     }
     
     func test_start_withOneQuestion_routesToCorrectQuestion_2() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q2"], router: router)
+        let sut = makeSut(questions: ["Q2"])
         
         sut.start()
         
@@ -39,8 +38,7 @@ class FlowTest: XCTestCase {
     }
     
     func test_start_withTwoQuestion_routesToFirstQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1", "Q2"], router: router)
+        let sut = makeSut(questions: ["Q1", "Q2"])
         
         sut.start()
         
@@ -48,8 +46,7 @@ class FlowTest: XCTestCase {
     }
     
     func test_startTwice_withTwoQuestion_routesToFirstQuestionTwice() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1", "Q2"], router: router)
+        let sut = makeSut(questions: ["Q1", "Q2"])
 
         sut.start()
         sut.start()
@@ -58,8 +55,7 @@ class FlowTest: XCTestCase {
     }
     
     func test_startAndAnswerFirstQuestion_withTwoQuestion_routesToSecondQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1", "Q2"], router: router)
+        let sut = makeSut(questions: ["Q1", "Q2"])
 
         sut.start()
         
@@ -67,7 +63,12 @@ class FlowTest: XCTestCase {
 
         XCTAssertEqual(router.routedQuestions, ["Q1", "Q2"])
     }
-
+    
+    // MARK: - Helpers
+    
+    func makeSut(questions: [String]) -> Flow {
+        return Flow(questions: questions, router: router)
+    }
     
     class RouterSpy: Router {
         var routedQuestions: [String] = []
