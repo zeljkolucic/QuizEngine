@@ -8,11 +8,10 @@
 import Foundation
 
 protocol Router {
-    
+    func route(to question: String)
 }
 
 class Flow {
-    
     let questions: [String]
     let router: Router
     
@@ -22,7 +21,9 @@ class Flow {
     }
     
     func start() {
-        
+        if !questions.isEmpty {
+            router.route(to: "")
+        }
     }
     
 }
