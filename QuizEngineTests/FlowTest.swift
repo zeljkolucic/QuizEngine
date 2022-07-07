@@ -85,19 +85,62 @@ class FlowTest: XCTestCase {
         XCTAssertEqual(router.routedQuestions, ["Q1"])
     }
     
+    func test_start_withNoQuestions_routesToResult() {
+        let sut = makeSut(questions: [])
+        
+        sut.start()
+        
+        XCTAssertEqual(router.routedResult, [:])
+    }
+    
+    func test_start_withOneQuestion_doesNotRouteToResult() {
+        let sut = makeSut(questions: ["Q1"])
+        
+        sut.start()
+        
+        XCTAssertNil(router.routedResult)
+    }
+    
+    func test_startAndAnswerFirstQuestion_withTwoQuestions_doesNotRouteToResult() {
+        let sut = makeSut(questions: ["Q1", "Q2"])
+        
+        sut.start()
+        
+        router.answerCallback("A1")
+        
+        XCTAssertNil(router.routedResult)
+    }
+    
+    func test_startAndAnswerFirstAndSecondQuestion_withOTwoQuestions_routesToResult() {
+        let sut = makeSut(questions: ["Q1", "Q2"])
+        
+        sut.start()
+        
+        router.answerCallback("A1")
+        router.answerCallback("A2")
+        
+        XCTAssertEqual(router.routedResult, ["Q1": "A1", "Q2": "A2"])
+    }
+    
     // MARK: - Helpers
     
-    func makeSut(questions: [String]) -> Flow {
-        return Flow(questions: questions, router: router)
+    func makeSut(questions: [String]) -> Flow<String, String, RouterSpy> {
+        return Flow(router: router, questions: questions)
     }
     
     class RouterSpy: Router {
         var routedQuestions: [String] = []
-        var answerCallback: Router.AnswerCallback = { _ in }
+        var routedResult: [String: String]?
         
-        func route(to question: String, answerCallback: @escaping Router.AnswerCallback) {
+        var answerCallback: (String) -> Void = { _ in }
+        
+        func routeTo(question: String, answerCallback: @escaping (String) -> Void) {
             routedQuestions.append(question)
             self.answerCallback = answerCallback
+        }
+        
+        func routeTo(result: [String : String]) {
+            routedResult = result
         }
     }
     
